@@ -148,7 +148,7 @@ body {
   --code-comment: #637777;
   
   /* Navigation / File Explorer (Sidebar defaults) */
-  --nav-item-color: #d6deeb;          /* Restored: Near-white for files */
+  --nav-item-color: #6a8fd8;          /* High contrast light blue #6a8fd8 for folders & files */
   --nav-item-color-hover: #ffffff;    /* Pure white on hover */
   --nav-item-color-active: #7fdbca;   /* Active selection color in Teal */
 
@@ -157,12 +157,10 @@ body {
   --icon-color-hover: #a9fef0;
   --icon-color-active: #a9fef0;
 
-  /* Graph View Colors (Monochromatic Teal base with glowing Peach focus highlight) */
+  /* Graph View Variables */
   --graph-node: #7fdbca;             /* Bright Teal - Regular notes */
   --graph-node-unresolved: #205047;  /* Dark Muted Teal - Empty links */
-  --graph-node-focused: #fcb45f;     /* Glowing Peach/Orange - Focused note */
-  --graph-node-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connected nodes */
-  --graph-line-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connection links */
+  --graph-node-focused: #fcb45f;     /* Glowing Peach/Orange - Focused note ring */
   --graph-node-tag: #c5e4fd;         /* Ice Blue - Tags */
   --graph-node-attachment: #addb67;  /* Pale Mint Green - Media/attachments */
   --graph-line: #0f2b3c;             /* Deep Slate Blue-Teal - Linking lines */
@@ -389,24 +387,23 @@ pre code {
 .theme-light .token.operator, .theme-light .cm-operator, .theme-light .token.punctuation, .theme-light .cm-punctuation { color: #905e99 !important; }
 
 /* =========================================================================
-   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Near-white titles, #6a8fd8 system labels)
+   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Near-white folders & files, blue headers)
    ========================================================================= */
 
-/* Restore Folder Casing to pure white and Files to near-white */
 .theme-dark .nav-folder-title {
-  color: #ffffff !important;         /* Restored: pure white folders */
+  color: #ffffff !important;         /* Pure white folders */
   font-weight: 600 !important;
 }
 
 .theme-dark .nav-file-title {
-  color: #d6deeb !important;         /* Restored: near-white #d6deeb files */
+  color: #d6deeb !important;         /* Near-white files */
   font-weight: 500 !important;
 }
 
 .theme-dark .nav-folder-title:hover,
 .theme-dark .nav-file-title:hover {
-  color: #ffffff !important;         /* Full white on hover */
-  background-color: rgba(127, 219, 202, 0.1) !important;
+  color: #ffffff !important;         /* Pure white on hover */
+  background-color: rgba(106, 143, 216, 0.12) !important;
 }
 
 .theme-dark .nav-file-title.is-active,
@@ -440,72 +437,24 @@ pre code {
 }
 
 /* =========================================================================
-   GRAPH VIEW OVERRIDES (Forcing WebGL accent color rendering to #fcb45f)
+   GRAPH VIEW OVERRIDES (Official Class Mappings for WebGL Canvas)
    ========================================================================= */
 
+/* Overriding the WebGL node fill classes */
+.theme-dark .graph-view.color-fill-focused {
+  color: #fcb45f !important;         /* Fills the focused note's inner circle in Peach/Orange */
+}
+
+.theme-dark .graph-view.color-fill-highlight {
+  color: #fcb45f !important;         /* Fills the highlighted neighbor nodes in Peach/Orange */
+}
+
+.theme-dark .graph-view.color-line-highlight {
+  color: #fcb45f !important;         /* Changes highlighted link edges to Peach/Orange */
+}
+
+/* Core graph variables for backup consistency */
 .theme-dark .graph-view-container,
 .theme-dark .workspace-leaf-content[data-type="graph"] {
-  /* Override interactive colors inside graph canvas DOM scope */
-  --interactive-accent: #fcb45f !important;
-  --text-accent: #fcb45f !important;
-  
-  /* Core graph variables */
   --graph-node-focused: #fcb45f !important;
-  --graph-node-highlighted: #fcb45f !important;
-  --graph-line-highlighted: #fcb45f !important;
-}
-
-/* =========================================================================
-   ADVANCED STYLE SETTINGS TOGGLES
-   ========================================================================= */
-
-/* 1. Glassmorphic Sidebar Effect */
-body.night-owl-glass-sidebar .workspace-ribbon.mod-left,
-body.night-owl-glass-sidebar .workspace-split.mod-left-split,
-body.night-owl-glass-sidebar .workspace-split.mod-right-split {
-  background-color: rgba(1, 14, 23, 0.75) !important;
-  backdrop-filter: blur(16px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
-}
-
-body.night-owl-glass-sidebar.theme-light .workspace-ribbon.mod-left,
-body.night-owl-glass-sidebar.theme-light .workspace-split.mod-left-split,
-body.night-owl-glass-sidebar.theme-light .workspace-split.mod-right-split {
-  background-color: rgba(235, 241, 246, 0.75) !important;
-  backdrop-filter: blur(16px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
-}
-
-/* 2. Neon Glow Headers */
-body.night-owl-neon-glow h1,
-body.night-owl-neon-glow .cm-header-1 {
-  text-shadow: 0 0 10px rgba(199, 146, 234, 0.35), 0 0 25px rgba(199, 146, 234, 0.1) !important;
-}
-
-body.night-owl-neon-glow h2,
-body.night-owl-neon-glow .cm-header-2 {
-  text-shadow: 0 0 10px rgba(173, 219, 103, 0.35), 0 0 25px rgba(173, 219, 103, 0.1) !important;
-}
-
-body.night-owl-neon-glow h3,
-body.night-owl-neon-glow .cm-header-3 {
-  text-shadow: 0 0 10px rgba(127, 219, 202, 0.35), 0 0 25px rgba(127, 219, 202, 0.1) !important;
-}
-
-/* 3. Neo-brutalist Borders */
-body.night-owl-neo-borders {
-  --background-modifier-border: #82aaff;
-  --border-color: #82aaff;
-}
-
-body.night-owl-neo-borders.theme-light {
-  --background-modifier-border: #0c969b;
-  --border-color: #0c969b;
-}
-
-body.night-owl-neo-borders .workspace-split,
-body.night-owl-neo-borders .workspace-tabs,
-body.night-owl-neo-borders .workspace-leaf,
-body.night-owl-neo-borders .workspace-ribbon {
-  border: 1px solid var(--border-color) !important;
 }
