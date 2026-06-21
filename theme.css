@@ -147,15 +147,20 @@ body {
   --code-background: #01111d; /* tab.inactiveBackground */
   --code-comment: #637777;
   
-  /* Navigation / File Explorer (Sidebar text) */
-  --nav-item-color: rgba(127, 219, 202, 0.85);
-  --nav-item-color-hover: #a9fef0;
-  --nav-item-color-active: #a9fef0;
+  /* Navigation / File Explorer (Sidebar text: near white colors) */
+  --nav-item-color: #d6deeb;          /* Near white for files */
+  --nav-item-color-hover: #ffffff;
+  --nav-item-color-active: #7fdbca;
 
-  /* Graph View Colors (Cohesive monochromatic palette revolving around #7fdbca) */
+  /* Icon Colors */
+  --icon-color: #7fdbca;             /* Global UI icons set to Teal */
+  --icon-color-hover: #a9fef0;
+  --icon-color-active: #a9fef0;
+
+  /* Graph View Colors (Note focus set to #fcb45f) */
   --graph-node: #7fdbca;             /* Bright Teal - Regular notes */
-  --graph-node-unresolved: #205047;  /* Dark Muted Teal - Muted uncreated links */
-  --graph-node-focused: #a9fef0;     /* Ultra-bright Mint Teal (Glowing) - Selected note */
+  --graph-node-unresolved: #205047;  /* Dark Muted Teal - Empty links */
+  --graph-node-focused: #fcb45f;     /* Glowing Orange/Peach (#fcb45f) - Active note focus */
   --graph-node-tag: #c5e4fd;         /* Ice Blue - Tags */
   --graph-node-attachment: #addb67;  /* Pale Mint Green - Media/attachments */
   --graph-line: #0f2b3c;             /* Deep Slate Blue-Teal - Linking lines */
@@ -382,35 +387,42 @@ pre code {
 .theme-light .token.operator, .theme-light .cm-operator, .theme-light .token.punctuation, .theme-light .cm-punctuation { color: #905e99 !important; }
 
 /* =========================================================================
-   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Themed around #7fdbca)
+   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Folders & Files near white)
    ========================================================================= */
 
 .theme-dark .nav-folder-title {
-  color: #7fdbca !important;         /* Signature Teal #7fdbca for folder names */
-  font-weight: 600 !important;       /* Bold structural text */
+  color: #ffffff !important;         /* Pure white for folders */
+  font-weight: 600 !important;       /* Semi-bold */
 }
 
 .theme-dark .nav-file-title {
-  color: rgba(127, 219, 202, 0.8) !important; /* Slightly transparent soft teal for file names */
+  color: #d6deeb !important;         /* Near white (#d6deeb) for file names */
 }
 
 .theme-dark .nav-folder-title:hover,
 .theme-dark .nav-file-title:hover {
-  color: #a9fef0 !important;         /* Vibrant glowing mint teal on hover */
+  color: #ffffff !important;         /* Full white on hover */
   background-color: rgba(127, 219, 202, 0.1) !important;
 }
 
 .theme-dark .nav-file-title.is-active,
 .theme-dark .nav-folder-title.is-active {
-  color: #a9fef0 !important;         /* Glowing mint teal for currently active notes */
+  color: #7fdbca !important;         /* Active state highlights in soft teal */
   font-weight: 700 !important;
   background-color: rgba(127, 219, 202, 0.18) !important;
-  border-left: 2px solid #7fdbca;    /* Mint bar on the left to indicate focus */
+  border-left: 2px solid #7fdbca;
 }
 
-/* Collapse/Expand Arrows */
-.theme-dark .nav-folder-collapse-indicator {
-  color: #7fdbca !important;         /* Soft teal arrow icon indicators */
+/* Force all collapse arrows & file explorer tree icons to Teal #7fdbca */
+.theme-dark .nav-folder-collapse-indicator,
+.theme-dark .tree-item-icon,
+.theme-dark .nav-folder-title .collapse-icon,
+.theme-dark .clickable-icon {
+  color: #7fdbca !important;         /* Pure Teal for icon indicators */
+}
+
+.theme-dark .clickable-icon:hover {
+  color: #a9fef0 !important;         /* Glowing mint teal on hover */
 }
 
 /* =========================================================================
