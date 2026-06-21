@@ -108,12 +108,12 @@ body {
    ========================================================================= */
 
 .theme-dark {
-  /* Colors */
+  /* Core Variables mapped to official Obsidian tokens */
   --accent-color: var(--night-owl-accent-color, #82aaff);
-  --bg-primary: var(--night-owl-bg-dark, #011627); /* Editor Background */
-  --bg-secondary: var(--night-owl-sidebar-dark, #010e17); /* Sidebar Background */
-  --bg-primary-alt: #0b253a; /* Input background / Alt primary */
-  --bg-secondary-alt: #010a10;
+  --background-primary: var(--night-owl-bg-dark, #011627); /* Editor Background */
+  --background-secondary: var(--night-owl-sidebar-dark, #010e17); /* Sidebar Background */
+  --background-primary-alt: #0b253a; /* Input background / Alt primary */
+  --background-secondary-alt: #010a10;
 
   /* Interactive Elements */
   --text-accent: var(--accent-color);
@@ -158,12 +158,12 @@ body {
    ========================================================================= */
 
 .theme-light {
-  /* Colors */
+  /* Core Variables mapped to official Obsidian tokens */
   --accent-color: var(--night-owl-accent-color, #0c969b);
-  --bg-primary: var(--night-owl-bg-light, #f0f4f8);
-  --bg-secondary: var(--night-owl-sidebar-light, #ebf1f6);
-  --bg-primary-alt: #e1e8f0;
-  --bg-secondary-alt: #e2ebf2;
+  --background-primary: var(--night-owl-bg-light, #f0f4f8);
+  --background-secondary: var(--night-owl-sidebar-light, #ebf1f6);
+  --background-primary-alt: #e1e8f0;
+  --background-secondary-alt: #e2ebf2;
 
   /* Interactive Elements */
   --text-accent: var(--accent-color);
@@ -207,7 +207,7 @@ body {
    ========================================================================= */
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--background-primary);
   color: var(--text-normal);
 }
 
@@ -268,7 +268,7 @@ pre code {
 .callout {
   border-left: 4px solid var(--accent-color);
   border-radius: 8px;
-  background-color: var(--bg-primary-alt);
+  background-color: var(--background-primary-alt);
   padding: 12px 16px;
   margin: 1.5em 0;
 }
@@ -280,7 +280,7 @@ pre code {
 
 /* Tag Pills */
 .tag, a.tag {
-  background-color: var(--bg-primary-alt) !important;
+  background-color: var(--background-primary-alt) !important;
   color: var(--accent-color) !important;
   border: 1px solid var(--background-modifier-border) !important;
   border-radius: 20px !important;
@@ -292,7 +292,7 @@ pre code {
 
 .tag:hover, a.tag:hover {
   background-color: var(--accent-color) !important;
-  color: var(--bg-primary) !important;
+  color: var(--background-primary) !important;
   border-color: var(--accent-color) !important;
 }
 
