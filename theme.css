@@ -147,20 +147,20 @@ body {
   --code-background: #01111d; /* tab.inactiveBackground */
   --code-comment: #637777;
   
-  /* Navigation / File Explorer (Sidebar text) */
-  --nav-item-color: #6a8fd8;          /* High contrast light blue #6a8fd8 by default */
+  /* Navigation / File Explorer (Sidebar defaults) */
+  --nav-item-color: #d6deeb;          /* Restored: Near-white for files */
   --nav-item-color-hover: #ffffff;    /* Pure white on hover */
-  --nav-item-color-active: #7fdbca;   /* Active selection color */
+  --nav-item-color-active: #7fdbca;   /* Active selection color in Teal */
 
   /* Icon Colors */
   --icon-color: #7fdbca;             /* Global UI icons set to Teal */
   --icon-color-hover: #a9fef0;
   --icon-color-active: #a9fef0;
 
-  /* Graph View Colors (Monochromatic Teal with glowing Peach focus highlight) */
+  /* Graph View Colors (Monochromatic Teal base with glowing Peach focus highlight) */
   --graph-node: #7fdbca;             /* Bright Teal - Regular notes */
   --graph-node-unresolved: #205047;  /* Dark Muted Teal - Empty links */
-  --graph-node-focused: #fcb45f;     /* Glowing Peach/Orange - Focused note fill color */
+  --graph-node-focused: #fcb45f;     /* Glowing Peach/Orange - Focused note */
   --graph-node-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connected nodes */
   --graph-line-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connection links */
   --graph-node-tag: #c5e4fd;         /* Ice Blue - Tags */
@@ -389,19 +389,24 @@ pre code {
 .theme-light .token.operator, .theme-light .cm-operator, .theme-light .token.punctuation, .theme-light .cm-punctuation { color: #905e99 !important; }
 
 /* =========================================================================
-   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Blue titles and near white highlights)
+   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Near-white titles, #6a8fd8 system labels)
    ========================================================================= */
 
-.theme-dark .nav-folder-title,
+/* Restore Folder Casing to pure white and Files to near-white */
+.theme-dark .nav-folder-title {
+  color: #ffffff !important;         /* Restored: pure white folders */
+  font-weight: 600 !important;
+}
+
 .theme-dark .nav-file-title {
-  color: #6a8fd8 !important;         /* Light purple-blue #6a8fd8 for folders & files */
+  color: #d6deeb !important;         /* Restored: near-white #d6deeb files */
   font-weight: 500 !important;
 }
 
 .theme-dark .nav-folder-title:hover,
 .theme-dark .nav-file-title:hover {
-  color: #ffffff !important;         /* Pure white on hover */
-  background-color: rgba(106, 143, 216, 0.12) !important;
+  color: #ffffff !important;         /* Full white on hover */
+  background-color: rgba(127, 219, 202, 0.1) !important;
 }
 
 .theme-dark .nav-file-title.is-active,
@@ -410,6 +415,16 @@ pre code {
   font-weight: 700 !important;
   background-color: rgba(127, 219, 202, 0.18) !important;
   border-left: 2px solid #7fdbca;
+}
+
+/* Sidebar Headings, Vault Titles, and Meta Labels set to #6a8fd8 */
+.theme-dark .nav-header,
+.theme-dark .workspace-drawer-vault-header,
+.theme-dark .workspace-tab-header-tab-title,
+.theme-dark .view-header-title,
+.theme-dark .metadata-properties-heading {
+  color: #6a8fd8 !important;         /* System Titles & Labels set to #6a8fd8 */
+  font-weight: 600 !important;
 }
 
 /* Force all collapse arrows & file explorer tree icons to Teal #7fdbca */
@@ -422,6 +437,22 @@ pre code {
 
 .theme-dark .clickable-icon:hover {
   color: #a9fef0 !important;         /* Glowing mint teal on hover */
+}
+
+/* =========================================================================
+   GRAPH VIEW OVERRIDES (Forcing WebGL accent color rendering to #fcb45f)
+   ========================================================================= */
+
+.theme-dark .graph-view-container,
+.theme-dark .workspace-leaf-content[data-type="graph"] {
+  /* Override interactive colors inside graph canvas DOM scope */
+  --interactive-accent: #fcb45f !important;
+  --text-accent: #fcb45f !important;
+  
+  /* Core graph variables */
+  --graph-node-focused: #fcb45f !important;
+  --graph-node-highlighted: #fcb45f !important;
+  --graph-line-highlighted: #fcb45f !important;
 }
 
 /* =========================================================================
