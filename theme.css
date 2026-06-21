@@ -28,10 +28,10 @@ settings:
     default: '#011627'
   - id: night-owl-sidebar-dark
     title: Dark Sidebar Background (Nền thanh bên tối)
-    description: Màu nền cho thanh bên và ribbon ở chế độ tối. (Mặc định: #010e17)
+    description: Màu nền cho thanh bên và ribbon ở chế độ tối. (Mặc định: #011627)
     type: variable-color
     format: hex
-    default: '#010e17'
+    default: '#011627'
   - id: night-owl-bg-light
     title: Light Editor Background (Nền soạn thảo sáng)
     description: Màu nền chính cho giao diện Light Mode. (Mặc định: #f0f4f8)
@@ -111,9 +111,9 @@ body {
   /* Core Variables mapped to official Obsidian tokens */
   --accent-color: var(--night-owl-accent-color, #82aaff);
   --background-primary: var(--night-owl-bg-dark, #011627); /* Editor Background */
-  --background-secondary: var(--night-owl-sidebar-dark, #010e17); /* Sidebar Background */
+  --background-secondary: var(--night-owl-sidebar-dark, #011627); /* Sidebar Background synced with Editor */
   --background-primary-alt: #0b253a; /* Input background / Alt primary */
-  --background-secondary-alt: #010a10;
+  --background-secondary-alt: #010e17; /* Darker tone for inactive regions */
 
   /* Interactive Elements */
   --text-accent: var(--accent-color);
@@ -147,20 +147,22 @@ body {
   --code-background: #01111d; /* tab.inactiveBackground */
   --code-comment: #637777;
   
-  /* Navigation / File Explorer (Sidebar text: near white colors) */
-  --nav-item-color: #d6deeb;          /* Near white for files */
-  --nav-item-color-hover: #ffffff;
-  --nav-item-color-active: #7fdbca;
+  /* Navigation / File Explorer (Sidebar text) */
+  --nav-item-color: #6a8fd8;          /* High contrast light blue #6a8fd8 by default */
+  --nav-item-color-hover: #ffffff;    /* Pure white on hover */
+  --nav-item-color-active: #7fdbca;   /* Active selection color */
 
   /* Icon Colors */
   --icon-color: #7fdbca;             /* Global UI icons set to Teal */
   --icon-color-hover: #a9fef0;
   --icon-color-active: #a9fef0;
 
-  /* Graph View Colors (Note focus set to #fcb45f) */
+  /* Graph View Colors (Monochromatic Teal with glowing Peach focus highlight) */
   --graph-node: #7fdbca;             /* Bright Teal - Regular notes */
   --graph-node-unresolved: #205047;  /* Dark Muted Teal - Empty links */
-  --graph-node-focused: #fcb45f;     /* Glowing Orange/Peach (#fcb45f) - Active note focus */
+  --graph-node-focused: #fcb45f;     /* Glowing Peach/Orange - Focused note fill color */
+  --graph-node-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connected nodes */
+  --graph-line-highlighted: #fcb45f; /* Glowing Peach/Orange - Highlighted connection links */
   --graph-node-tag: #c5e4fd;         /* Ice Blue - Tags */
   --graph-node-attachment: #addb67;  /* Pale Mint Green - Media/attachments */
   --graph-line: #0f2b3c;             /* Deep Slate Blue-Teal - Linking lines */
@@ -387,27 +389,24 @@ pre code {
 .theme-light .token.operator, .theme-light .cm-operator, .theme-light .token.punctuation, .theme-light .cm-punctuation { color: #905e99 !important; }
 
 /* =========================================================================
-   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Folders & Files near white)
+   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Blue titles and near white highlights)
    ========================================================================= */
 
-.theme-dark .nav-folder-title {
-  color: #ffffff !important;         /* Pure white for folders */
-  font-weight: 600 !important;       /* Semi-bold */
-}
-
+.theme-dark .nav-folder-title,
 .theme-dark .nav-file-title {
-  color: #d6deeb !important;         /* Near white (#d6deeb) for file names */
+  color: #6a8fd8 !important;         /* Light purple-blue #6a8fd8 for folders & files */
+  font-weight: 500 !important;
 }
 
 .theme-dark .nav-folder-title:hover,
 .theme-dark .nav-file-title:hover {
-  color: #ffffff !important;         /* Full white on hover */
-  background-color: rgba(127, 219, 202, 0.1) !important;
+  color: #ffffff !important;         /* Pure white on hover */
+  background-color: rgba(106, 143, 216, 0.12) !important;
 }
 
 .theme-dark .nav-file-title.is-active,
 .theme-dark .nav-folder-title.is-active {
-  color: #7fdbca !important;         /* Active state highlights in soft teal */
+  color: #7fdbca !important;         /* Active selection color in Teal */
   font-weight: 700 !important;
   background-color: rgba(127, 219, 202, 0.18) !important;
   border-left: 2px solid #7fdbca;
