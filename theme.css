@@ -437,26 +437,37 @@ pre code {
 }
 
 /* =========================================================================
-   GRAPH VIEW OVERRIDES (Global WebGL Class Mappings)
+   GRAPH VIEW OVERRIDES (Comprehensive Target Specifiers for WebGL)
    ========================================================================= */
 
-/* Overriding WebGL color-fill classes GLOBALLY to allow WebGL engine to match dummy elements */
+/* 1. Global Selectors (For WebGL color reader fallback outside theme container) */
 .graph-view.color-fill-focused {
-  color: #fcb45f !important;         /* Fills the focused node's inner circle in Peach/Orange */
+  color: #fcb45f !important;         /* Focused node inner fill */
 }
-
 .graph-view.color-fill-highlight {
-  color: #fcb45f !important;         /* Fills the highlighted neighbor nodes in Peach/Orange */
+  color: #fcb45f !important;         /* Highlighted neighbor nodes fill */
 }
-
 .graph-view.color-line-highlight {
-  color: #fcb45f !important;         /* Changes highlighted link edges to Peach/Orange */
+  color: #fcb45f !important;         /* Highlighted connections */
 }
 
-/* Local graph wrapper adjustments */
+/* 2. Theme-Dark Selectors (Highest specificity to override Obsidian default styles) */
+.theme-dark .graph-view.color-fill-focused {
+  color: #fcb45f !important;         /* Force Peach/Orange for focused node */
+}
+.theme-dark .graph-view.color-fill-highlight {
+  color: #fcb45f !important;         /* Force Peach/Orange for neighbor node highlights */
+}
+.theme-dark .graph-view.color-line-highlight {
+  color: #fcb45f !important;         /* Force Peach/Orange for connection lines highlight */
+}
+
+/* 3. Local graph container variables override */
 .theme-dark .graph-view-container,
 .theme-dark .workspace-leaf-content[data-type="graph"] {
   --graph-node-focused: #fcb45f !important;
+  --interactive-accent: #fcb45f !important;
+  --text-accent: #fcb45f !important;
 }
 
 /* =========================================================================
@@ -473,8 +484,8 @@ body.night-owl-glass-sidebar .workspace-split.mod-right-split {
 }
 
 body.night-owl-glass-sidebar.theme-light .workspace-ribbon.mod-left,
-body.night-owl-glass-sidebar.theme-light .workspace-split.mod-left-split,
-body.night-owl-glass-sidebar.theme-light .workspace-split.mod-right-split {
+body.theme-light.night-owl-glass-sidebar .workspace-split.mod-left-split,
+body.theme-light.night-owl-glass-sidebar .workspace-split.mod-right-split {
   background-color: rgba(235, 241, 246, 0.75) !important;
   backdrop-filter: blur(16px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
