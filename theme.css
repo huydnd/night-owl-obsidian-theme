@@ -113,7 +113,7 @@ body {
   --background-primary: var(--night-owl-bg-dark, #011627); /* Editor Background */
   --background-secondary: var(--night-owl-sidebar-dark, #011627); /* Sidebar Background synced with Editor */
   --background-primary-alt: #0b253a; /* Input background / Alt primary */
-  --background-secondary-alt: #010e17; /* Darker tone for inactive regions */
+  --background-secondary-alt: #011627; /* Restored: #010e17 changed to #011627 */
 
   /* Interactive Elements */
   --text-accent: var(--accent-color);
@@ -437,24 +437,79 @@ pre code {
 }
 
 /* =========================================================================
-   GRAPH VIEW OVERRIDES (Official Class Mappings for WebGL Canvas)
+   GRAPH VIEW OVERRIDES (Global WebGL Class Mappings)
    ========================================================================= */
 
-/* Overriding the WebGL node fill classes */
-.theme-dark .graph-view.color-fill-focused {
-  color: #fcb45f !important;         /* Fills the focused note's inner circle in Peach/Orange */
+/* Overriding WebGL color-fill classes GLOBALLY to allow WebGL engine to match dummy elements */
+.graph-view.color-fill-focused {
+  color: #fcb45f !important;         /* Fills the focused node's inner circle in Peach/Orange */
 }
 
-.theme-dark .graph-view.color-fill-highlight {
+.graph-view.color-fill-highlight {
   color: #fcb45f !important;         /* Fills the highlighted neighbor nodes in Peach/Orange */
 }
 
-.theme-dark .graph-view.color-line-highlight {
+.graph-view.color-line-highlight {
   color: #fcb45f !important;         /* Changes highlighted link edges to Peach/Orange */
 }
 
-/* Core graph variables for backup consistency */
+/* Local graph wrapper adjustments */
 .theme-dark .graph-view-container,
 .theme-dark .workspace-leaf-content[data-type="graph"] {
   --graph-node-focused: #fcb45f !important;
+}
+
+/* =========================================================================
+   ADVANCED STYLE SETTINGS TOGGLES
+   ========================================================================= */
+
+/* 1. Glassmorphic Sidebar Effect */
+body.night-owl-glass-sidebar .workspace-ribbon.mod-left,
+body.night-owl-glass-sidebar .workspace-split.mod-left-split,
+body.night-owl-glass-sidebar .workspace-split.mod-right-split {
+  background-color: rgba(1, 22, 39, 0.75) !important;  /* Synced to #011627: rgb(1, 22, 39) */
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+}
+
+body.night-owl-glass-sidebar.theme-light .workspace-ribbon.mod-left,
+body.night-owl-glass-sidebar.theme-light .workspace-split.mod-left-split,
+body.night-owl-glass-sidebar.theme-light .workspace-split.mod-right-split {
+  background-color: rgba(235, 241, 246, 0.75) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+}
+
+/* 2. Neon Glow Headers */
+body.night-owl-neon-glow h1,
+body.night-owl-neon-glow .cm-header-1 {
+  text-shadow: 0 0 10px rgba(199, 146, 234, 0.35), 0 0 25px rgba(199, 146, 234, 0.1) !important;
+}
+
+body.night-owl-neon-glow h2,
+body.night-owl-neon-glow .cm-header-2 {
+  text-shadow: 0 0 10px rgba(173, 219, 103, 0.35), 0 0 25px rgba(173, 219, 103, 0.1) !important;
+}
+
+body.night-owl-neon-glow h3,
+body.night-owl-neon-glow .cm-header-3 {
+  text-shadow: 0 0 10px rgba(127, 219, 202, 0.35), 0 0 25px rgba(127, 219, 202, 0.1) !important;
+}
+
+/* 3. Neo-brutalist Borders */
+body.night-owl-neo-borders {
+  --background-modifier-border: #82aaff;
+  --border-color: #82aaff;
+}
+
+body.night-owl-neo-borders.theme-light {
+  --background-modifier-border: #0c969b;
+  --border-color: #0c969b;
+}
+
+body.night-owl-neo-borders .workspace-split,
+body.night-owl-neo-borders .workspace-tabs,
+body.night-owl-neo-borders .workspace-leaf,
+body.night-owl-neo-borders .workspace-ribbon {
+  border: 1px solid var(--border-color) !important;
 }
