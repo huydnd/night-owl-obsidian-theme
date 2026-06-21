@@ -147,10 +147,19 @@ body {
   --code-background: #01111d; /* tab.inactiveBackground */
   --code-comment: #637777;
   
-  /* Additional UI elements */
+  /* Navigation / File Explorer (Sidebar text) */
+  --nav-item-color: #d6deeb;
   --nav-item-color-hover: #82aaff;
-  --nav-item-background-hover: #1d3b53;
-  --nav-item-background-active: #0b2942; /* tab.activeBackground */
+  --nav-item-color-active: #82aaff;
+
+  /* Graph View Colors (Highly saturated, bright colors to stand out on dark blue background) */
+  --graph-node: #7fdbca;             /* Bright Cyan/Teal - Existing notes */
+  --graph-node-unresolved: #ff5874;  /* Bright Pink/Red - Empty/uncreated notes */
+  --graph-node-focused: #82aaff;     /* Bright Blue - Currently active note */
+  --graph-node-tag: #c792ea;         /* Bright Purple - Tags */
+  --graph-node-attachment: #addb67;  /* Bright Lime Green - Attachments (images, pdfs) */
+  --graph-line: #2b3e50;             /* Medium Gray-Blue - Connection lines */
+  --graph-text: #ffffff;             /* Pure White - Node labels */
 }
 
 /* =========================================================================
@@ -196,10 +205,19 @@ body {
   --code-background: #e1e8f0;
   --code-comment: #989fb1;
 
-  /* Additional UI elements */
+  /* Navigation / File Explorer */
+  --nav-item-color: #403f53;
   --nav-item-color-hover: #0c969b;
-  --nav-item-background-hover: #d0dde9;
-  --nav-item-background-active: #e1e8f0;
+  --nav-item-color-active: #0c969b;
+
+  /* Graph View Light Mode */
+  --graph-node: #0c969b;
+  --graph-node-unresolved: #d3423e;
+  --graph-node-focused: #4876d6;
+  --graph-node-tag: #905e99;
+  --graph-node-attachment: #6e8d19;
+  --graph-line: #d0dde9;
+  --graph-text: #2e3338;
 }
 
 /* =========================================================================
@@ -362,6 +380,37 @@ pre code {
 .theme-light .token.property, .theme-light .token.attr-name, .theme-light .cm-property, .theme-light .cm-attribute { color: #0c969b !important; }
 .theme-light .token.boolean, .theme-light .cm-boolean { color: #d3423e !important; }
 .theme-light .token.operator, .theme-light .cm-operator, .theme-light .token.punctuation, .theme-light .cm-punctuation { color: #905e99 !important; }
+
+/* =========================================================================
+   FILE EXPLORER & SIDEBAR CUSTOM STYLING (Making text bright and clear)
+   ========================================================================= */
+
+.theme-dark .nav-folder-title {
+  color: #ffffff !important;         /* Pure bright white for folders */
+  font-weight: 600 !important;       /* Semi-bold for clear structure */
+}
+
+.theme-dark .nav-file-title {
+  color: #c5e4fd !important;         /* Very light soft blue for file names */
+}
+
+.theme-dark .nav-folder-title:hover,
+.theme-dark .nav-file-title:hover {
+  color: #82aaff !important;         /* Bright electric blue on hover */
+  background-color: rgba(29, 59, 83, 0.4) !important;
+}
+
+.theme-dark .nav-file-title.is-active,
+.theme-dark .nav-folder-title.is-active {
+  color: #82aaff !important;         /* Bright electric blue for active files */
+  font-weight: 700 !important;
+  background-color: rgba(29, 59, 83, 0.6) !important;
+}
+
+/* Collapse/Expand Arrows */
+.theme-dark .nav-folder-collapse-indicator {
+  color: #82aaff !important;         /* Bright arrow icon indicators */
+}
 
 /* =========================================================================
    ADVANCED STYLE SETTINGS TOGGLES
